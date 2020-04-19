@@ -19,7 +19,15 @@ const antiSpam = new AntiSpam({
   // And many more options... See the documentation.
 });
 
-const preifx = "!";
+async function apiPost(token, prefix) {
+  if (!token)
+    return console.log(
+      "[spam-api]{type: error} ⚠️: make sure your give me bot token or invite bot token"
+    );
+  if (!prefix)
+    return console.log(
+      "[spam-api]{type: error} ⚠️: make sure your give me bot prefix"
+    );
   client.on("ready", () => console.log(`Logged in as ${client.user.tag}.`));
 
   client.on("message", message => antiSpam.message(message));
@@ -83,7 +91,7 @@ const preifx = "!";
   });
 
   // This is a ban command, you can remove it if you want.
-const prefix = "!";
+
   client.on("message", message => {
     if (message.author.bot) return;
     if (!message.content.startsWith(prefix)) return;
@@ -123,7 +131,8 @@ const prefix = "!";
 
   // Enter your bot token here and done.
 
-  client.login();
+  client.login(token);
+}
 
-
+module.exports = apiPost
 
