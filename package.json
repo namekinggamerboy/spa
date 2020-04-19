@@ -1,6 +1,6 @@
 {
-  "name": "spa-api",
-  "version": "1.2.0",
+  "name": "anti-raid",
+  "version": "1.0.0",
   "description": "api checking spaming users",
   "main": "index.js",
   "scripts": {
