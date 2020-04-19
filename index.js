@@ -36,7 +36,7 @@ client.on('ready', () => {
 
   // This is for all links
 
-  client.on("message", (message) => {
+  client.on("message", message => {
     if (message.channel.id === '') return; // Maybe You Wanna Ignore A Channel
 	  if (message.channel.id === '') return; // Same here you need to just enter the channel id
     if (message.content.includes("https://")) {
@@ -57,7 +57,7 @@ client.on('ready', () => {
   // This is the same as up but more for disocrd invite links
 
 
-  client.on(`message`, async message => {
+  client.on("message", async message => {
     const bannedWords = [`discord.gg`, `.gg/`, `.gg /`, `. gg /`, `. gg/`, `discord .gg /`, `discord.gg /`, `discord .gg/`, `discord .gg`, `discord . gg`, `discord. gg`, `discord gg`, `discordgg`, `discord gg /`]
     try {
         if (bannedWords.some(word => message.content.toLowerCase().includes(word))) {
@@ -79,9 +79,9 @@ client.on('ready', () => {
 // This is a ban command, you can remove it if you want.
 
  
-client.on('message', message => {
+client.on("message", message => {
 
-    if (message.author.x5bz) return;
+    if (message.author.bot) return;
 if (!message.content.startsWith(prefix)) return;
         
 let command = message.content.split(" ")[0];
@@ -101,8 +101,8 @@ if (!message.guild.member(user)
 
 message.guild.member(user).ban(7, user);
 
-const banembed = new Discord.RichEmbed()
-.setAuthor(`BANNED!`, user.displayAvatarURL)
+const banembed = new Discord.MessageEmbed()
+.setAuthor(`BANNED!`, user.displayAvatarURL())
 .setColor("RANDOM")
 .setTimestamp()
 .addField("**User:**",  '**[ ' + `${user.tag}` + ' ]**')
