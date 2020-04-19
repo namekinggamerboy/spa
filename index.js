@@ -22,19 +22,15 @@ const antiSpam = new AntiSpam({
 async function apiPost(token, prefix) {
   if (!token)
     return console.log(
-      "[spam-api]{type: error} ⚠️: make sure your give me bot token or invite bot token"
+      "[spam-api]{type: error} ⚠️: make sure your give me bot token or invite bot token(made by. Name boy and Οㄗ│Captaiℵ)"
     );
   if (!prefix)
     return console.log(
-      "[spam-api]{type: error} ⚠️: make sure your give me bot prefix"
+      "[spam-api]{type: error} ⚠️: make sure your give me bot prefix(made by. Name boy and Οㄗ│Captaiℵ)"
     );
-  client.on("ready", () => console.log(`Logged in as ${client.user.tag}.`));
+  client.on("ready", () => console.log(`[spam-api]☑️: successfully bot online bot name: ${client.user.tag}(made by. Name boy and Οㄗ│Captaiℵ)`));
 
   client.on("message", message => antiSpam.message(message));
-
-  client.on("ready", () => {
-    console.log(`Logging as ${client.user.tag}`);
-  });
 
   // This is for all links
 
@@ -134,5 +130,4 @@ async function apiPost(token, prefix) {
   client.login(token);
 }
 
-module.exports = apiPost
-
+module.exports = apiPost;
