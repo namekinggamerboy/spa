@@ -22,13 +22,13 @@ const antiSpam = new AntiSpam({
 async function apiPost(token, prefix) {
   if (!token)
     return console.log(
-      "[spam-api]{type: error} ⚠️: make sure your give me bot token or invite bot token(made by. Name boy and Οㄗ│Captaiℵ)"
+      "[anti-raid]{type: error} ⚠️: make sure your give me bot token or invite bot token(made by. Name boy and Οㄗ│Captaiℵ)"
     );
   if (!prefix)
     return console.log(
-      "[spam-api]{type: error} ⚠️: make sure your give me bot prefix(made by. Name boy and Οㄗ│Captaiℵ)"
+      "[anti-raid]{type: error} ⚠️: make sure your give me bot prefix(made by. Name boy and Οㄗ│Captaiℵ)"
     );
-  client.on("ready", () => console.log(`[spam-api]☑️: successfully bot online bot name: ${client.user.tag}(made by. Name boy and Οㄗ│Captaiℵ)`));
+  client.on("ready", () => console.log(`[anti-raid]☑️: successfully bot online bot name: ${client.user.tag}(made by. Name boy and Οㄗ│Captaiℵ)`));
 
   client.on("message", message => antiSpam.message(message));
 
