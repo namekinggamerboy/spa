@@ -1,5 +1,5 @@
 {
-  "name": "spa",
+  "name": "spa-api",
   "version": "1.2.0",
   "description": "api checking spaming users",
   "main": "index.js",
