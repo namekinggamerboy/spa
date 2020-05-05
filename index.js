@@ -45,16 +45,18 @@ async function apiPost(op) {
     if (message.channel.id === "") return; // Maybe You Wanna Ignore A Channel
     if (message.channel.id === "") return; // Same here you need to just enter the channel id
     if (message.content.includes("https://")) {      
-    if (message.author.hasPermission('MEMBERS_DELETE')) return;
-      message.delete();
+      if (message.member.hasPermission("MANAGE_MESSAGES")){
+   message.delete();
+}
     }
     if (message.content.includes("http://")) {
-        if (message.author.hasPermission('MEMBERS_DELETE')) return;
-      message.delete();
-    }
+          if (message.member.hasPermission("MANAGE_MESSAGES")){
+   message.delete();
+} }
     if (message.content.includes("www.")) { 
-        if (message.author.hasPermission('MEMBERS_DELETE')) return;
-      message.delete();
+       if (message.member.hasPermission("MANAGE_MESSAGES")){
+   message.delete();
+}
     }
   });
 
@@ -62,8 +64,8 @@ async function apiPost(op) {
 
   client.on("message", async message => {
       
-   if (message.author.hasPermission('MEMBERS_DELETE')) return;
-    const bannedWords = [
+         if (message.member.hasPermission("MANAGE_MESSAGES")){
+  const bannedWords = [
       `discord.gg`,
       `.gg/`,
       `.gg /`,
@@ -96,6 +98,7 @@ async function apiPost(op) {
     } catch (e) {
       console.log(e);
     }
+}
   });
 
   // This is a ban command, you can remove it if you want.
