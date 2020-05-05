@@ -19,17 +19,24 @@ const antiSpam = new AntiSpam({
   // And many more options... See the documentation.
 });
 
-async function apiPost(token, prefix) {
-  if (!token)
+async function apiPost(op) {
+  if (!op.token)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure your give me bot token or invite bot token(made by. Name boy and Οㄗ│Captaiℵ)"
     );
-  if (!prefix)
+  if (!op.prefix)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure your give me bot prefix(made by. Name boy and Οㄗ│Captaiℵ)"
     );
+      if (!op.stats)
+    return console.log(
+      "[anti-raid]{type: error} ⚠️: make sure your give me bot status(made by. Name boy and Οㄗ│Captaiℵ)"
+    );
   client.on("ready", () => console.log(`[anti-raid]☑️: successfully bot online bot name: ${client.user.tag}(made by. Name boy and Οㄗ│Captaiℵ)`));
-
+  client.on("ready", () => {
+      let io = op.stats.replace("{guilds}", client.guilds.size).replace("{users}", client.users.size);
+      client.user.setActivity(io);
+  });
   client.on("message", message => antiSpam.message(message));
 
   // This is for all links
@@ -37,13 +44,16 @@ async function apiPost(token, prefix) {
   client.on("message", message => {
     if (message.channel.id === "") return; // Maybe You Wanna Ignore A Channel
     if (message.channel.id === "") return; // Same here you need to just enter the channel id
-    if (message.content.includes("https://")) {
+    if (message.content.includes("https://")) {      
+    if (message.author.hasPermission('MEMBERS_DELETE')) return;
       message.delete();
     }
     if (message.content.includes("http://")) {
+        if (message.author.hasPermission('MEMBERS_DELETE')) return;
       message.delete();
     }
-    if (message.content.includes("www.")) {
+    if (message.content.includes("www.")) { 
+        if (message.author.hasPermission('MEMBERS_DELETE')) return;
       message.delete();
     }
   });
@@ -51,6 +61,8 @@ async function apiPost(token, prefix) {
   // This is the same as up but more for disocrd invite links
 
   client.on("message", async message => {
+      
+   if (message.author.hasPermission('MEMBERS_DELETE')) return;
     const bannedWords = [
       `discord.gg`,
       `.gg/`,
@@ -90,10 +102,10 @@ async function apiPost(token, prefix) {
 
   client.on("message", message => {
     if (message.author.bot) return;
-    if (!message.content.startsWith(prefix)) return;
+    if (!message.content.startsWith(op.prefix)) return;
 
     let command = message.content.split(" ")[0];
-    command = command.slice(prefix.length);
+    command = command.slice(op.prefix.length);
 
     let args = message.content.split(" ").slice(1);
 
@@ -122,12 +134,18 @@ async function apiPost(token, prefix) {
       message.channel.send({
         embed: banembed
       });
-    }
+    } else if(command === "setstatus"){
+        if(!args[0]) return message.reply("please give me stats type");
+        if(!args[1]) return message.reply("please give me stats");
+        let stats = args.splice(1).join(' ');
+        let ww = args[0];
+        client.user.setActivity(stats, {type: ww })
+        }
   });
 
   // Enter your bot token here and done.
 
-  client.login(token);
+  client.login(op.token);
 }
 
 module.exports = apiPost;
