@@ -18,7 +18,11 @@ const antiSpam = new AntiSpam({
   // And many more options... See the documentation.
 });
 
-async function apiPost(client) {
+module.exports = {
+
+  version: require("./package.json").version,
+
+  checkspam(client){
   if (!client)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure check your code(made by. Name boy and Οㄗ│Captaiℵ)"
@@ -94,5 +98,4 @@ let version = parseInt(Discord.version.split(".")[0], 10) < 12 ? "v11" : "v12";
   });
 
 }
-
-module.exports = apiPost;
+}
