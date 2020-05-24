@@ -14,7 +14,7 @@
   "author": "namekinggamerboy",
   "license": "ISC",
     "dependencies": {
-    "discord-anti-spam": "*",
+    "discord-anti-spam": "*"
   },
   "devDependencies": {
     "eslint": "^6.8.0"
