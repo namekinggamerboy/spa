@@ -126,7 +126,7 @@ async function apiPost(op) {
       if (!message.guild.member(user).bannable)
         return message.reply("**I Cant BAN Someone With Higher Role Than Me**");
 
-      message.guild.member(user).ban(7, user);
+      message.guild.member(user).ban(user, { days: 7 });
 
       const banembed = new Discord.MessageEmbed()
         .setAuthor(`BANNED!`, user.displayAvatarURL())
