@@ -1,6 +1,6 @@
 {
   "name": "anti-raid",
-  "version": "1.0.0",
+  "version": "1.0.7",
   "description": "api checking spaming users",
   "main": "index.js",
   "scripts": {
