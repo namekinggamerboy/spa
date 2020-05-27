@@ -21,7 +21,7 @@ const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam({ 
 client: bot 
 });
-client.login("<your bot token>");
+bot.login("<your bot token>");
 
 ```
 
