@@ -16,10 +16,10 @@ ex.
 ```
 
 const Discord = require("discord.js");
-const client = new Discord.Client();
+const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
-const setup = Antiraid.start({ 
-client: client 
+const setup = Antiraid.checkspam({ 
+client: bot 
 });
 client.login("<your bot token>");
 
