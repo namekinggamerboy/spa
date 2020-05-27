@@ -22,6 +22,7 @@ const setup = Antiraid.start({
 client: client 
 });
 client.login("<your bot token>");
+
 ```
 
-[join support server](https://discord.gg/uSVhXHK)
+[join support server](https://discord.gg/KmngEup)
