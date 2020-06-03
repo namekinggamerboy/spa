@@ -12,13 +12,13 @@ Fully customisable your self
 
 how to use api
 
-ex.
+Besic ex.
 ```
 
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
-const setup = Antiraid.checkspam({ 
+const setup = Antiraid.checkspam(client:{ 
 client: bot 
 });
 bot.login("<your bot token>");
