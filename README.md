@@ -26,3 +26,27 @@ bot.login("<your bot token>");
 ```
 
 [join support server](https://discord.gg/KmngEup)
+
+Fully customisable Ex.
+
+```
+const Discord = require("discord.js");
+const bot = new Discord.Client();
+const Antiraid = require("anti-raid");
+const setup = Antiraid.checkspam(client:{ 
+client: bot,
+bot: true, // check bot spam true or false 
+warn: 3, //warn
+kick: 4, //4 warn = kick
+ban: 6, //6 warn = ban
+interval: 3200, //check spam await
+maxwarn: 7, //max warn count
+maxkick: 6, //max kick count
+maxban: 8, //max ban count
+permission: ["ADMINISTRATOR"], //role parmission
+verbose: false,
+ignoreduser: ["596521432507219980"], //not check spam this user id
+});
+bot.login("<your bot token>");
+
+```
