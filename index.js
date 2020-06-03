@@ -6,7 +6,7 @@ module.exports = {
   version: require("./package.json").version,
 
   checkspam(client){
-  if (!client.bot)
+  if (!client.client)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure check your code(made by. Name boy and Οㄗ│Captaiℵ)"
     );
