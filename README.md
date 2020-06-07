@@ -19,7 +19,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam(client:{ 
-client: bot 
+clientBot: bot 
 });
 bot.login("<your bot token>");
 
@@ -34,7 +34,7 @@ const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam(client:{ 
-client: bot,
+clientBot: bot,
 bot: true, // check bot spam true or false 
 warn: 3, //warn
 kick: 4, //4 warn = kick
