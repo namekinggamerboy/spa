@@ -18,7 +18,7 @@ Besic ex.
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
-const setup = Antiraid.checkspam(client:{ 
+const setup = Antiraid.checkspam({
 clientBot: bot 
 });
 bot.login("<your bot token>");
@@ -33,7 +33,7 @@ Fully customisable Ex.
 const Discord = require("discord.js");
 const bot = new Discord.Client();
 const Antiraid = require("anti-raid");
-const setup = Antiraid.checkspam(client:{ 
+const setup = Antiraid.checkspam({ 
 clientBot: bot,
 bot: true, // check bot spam true or false 
 warn: 3, //warn
