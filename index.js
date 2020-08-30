@@ -5,36 +5,36 @@ module.exports = {
 
   version: require("./package.json").version,
 
-  checkspam(client){
-  if (!client.clientBot)
+  checkspam(op){
+  if (!op.clientBot)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure check your code(made by. Name boy and Οㄗ│Captaiℵ)"
     );
 
-  client.clientBot.on("ready", () => console.log(`[anti-raid]☑️: successfully active anti-raid(made by. Name boy and Οㄗ│Captaiℵ)`));
+  op.clientBot.on("ready", () => console.log(`[anti-raid]☑️: successfully active anti-raid(made by. Name boy and Οㄗ│Captaiℵ)`));
   
 const antiSpam = new AntiSpam({
-  warnThreshold: client.warn||3,
-  kickThreshold: client.kick||7,
-  banThreshold: client.ban||7,
-  maxInterval: client.interval||2000,
+  warnThreshold: op.warn||3,
+  kickThreshold: op.kick||7,
+  banThreshold: op.ban||7,
+  maxInterval: op.interval||2000,
   warnMessage: "{@user}, Please stop spamming.",
   kickMessage: "**{user_tag}** has been kicked for spamming.",
   banMessage: "**{user_tag}** has been banned for spamming.",
-  maxDuplicatesWarning: client.maxwarn||7,
-  maxDuplicatesKick: client.maxkick||10,
-  maxDuplicatesBan: client.maxban||12,
-  exemptPermissions: client.permission||["ADMINISTRATOR", "MANAGE_MESSAGES"], 
-  ignoreBots: client.bot||false,
-  verbose: client.verbose||true,
-  ignoredUsers: client.ignoreduser||[]
+  maxDuplicatesWarning: op.maxwarn||7,
+  maxDuplicatesKick: op.maxkick||10,
+  maxDuplicatesBan: op.maxban||12,
+  exemptPermissions: op.permission||["ADMINISTRATOR", "MANAGE_MESSAGES"], 
+  ignoreBots: op.bot||false,
+  verbose: op.verbose||true,
+  ignoredUsers: op.ignoreduser||[]
 });
     
-  client.clientBot.on("message", message => antiSpam.message(message));
+  op.clientBot.on("message", message => antiSpam.message(message));
 
   // This is for all links
 
-  client.clientBot.on("message", message => {
+  op.clientBot.on("message", message => {
     if (message.content.includes("https://")) {      
       if (!message.member.hasPermission("MANAGE_MESSAGES")){
    message.delete();
@@ -53,7 +53,7 @@ const antiSpam = new AntiSpam({
 
   // This is the same as up but more for disocrd invite links
 
-  client.clientBot.on("message", async message => {
+  op.clientBot.on("message", async message => {
       
          if (!message.member.hasPermission("MANAGE_MESSAGES")){
   const bannedWords = [
