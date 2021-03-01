@@ -1,16 +1,40 @@
 const AntiSpam = require("discord-anti-spam");
 const Discord = require("discord.js");
-
+let ich;
 module.exports = {
 
   version: require("./package.json").version,
+   
+  addChannel(ch){
+    if(ich){
+      if(!ich.find(e => e === ch)){
+          ich.push(ch);
+      }
+    } 
+  },
+  
+  removeChannel(ch){
+     if(ich){
+      if(ich.find(e => e === ch)){
+          ich = ich.filter(e => e === ch);
+      }
+    } 
 
+  },
+  
+  list(){
+      return ich;
+  },
+   
   checkspam(op){
   if (!op.clientBot)
     return console.log(
       "[anti-raid]{type: error} ⚠️: make sure check your code(made by. Name boy and Οㄗ│Captaiℵ)"
     );
 let client = op.clientBot;
+ ich = client.NoCheckSpamChannel;
+ if(!ich) ich = [];
+ 
   client.on("ready", () => console.log(`[anti-raid]☑️: successfully active anti-raid(made by. Name boy and Οㄗ│Captaiℵ)`));
   
 const antiSpam = new AntiSpam({
@@ -30,11 +54,16 @@ const antiSpam = new AntiSpam({
   ignoredUsers: op.ignoreduser||[]
 });
     
-  client.on("message", message => antiSpam.message(message));
+  client.on("message", message => {
+     if(!ich.includes(message.channel.id)){ 
+  antiSpam.message(message);
+  }
+  });
 
   // This is for all links
 
   client.on("message", message => {
+      if(!ich.includes(message.channel.id)){
     if (message.content.includes("https://")) {      
       if (!message.member.hasPermission("MANAGE_MESSAGES")){
    message.delete();
@@ -49,12 +78,13 @@ const antiSpam = new AntiSpam({
    message.delete();
 }
     }
+    }
   });
 
   // This is the same as up but more for disocrd invite links
 
   client.on("message", async message => {
-      
+      if(!ich.includes(message.channel.id)){
          if (!message.member.hasPermission("MANAGE_MESSAGES")){
   const bannedWords = [
       `discord.gg`,
@@ -91,6 +121,7 @@ const antiSpam = new AntiSpam({
     } catch (e) {
       console.log(e);
     }
+}
 }
   });
 
