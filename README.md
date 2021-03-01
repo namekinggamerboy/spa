@@ -2,8 +2,8 @@
 
 new update info :
 
-Now api support discord.js v11 or v12
-new method
+Now add No check Spam channel 
+add or remove method
 Fully customisable your self
 
 <a href="https://www.npmjs.com/package/anti-raid" ><img src="https://img.shields.io/npm/v/anti-raid.svg?maxAge=3600" ></a>
@@ -17,6 +17,7 @@ Besic ex.
 
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+bot.NoCheckSpamChannel = ["< Channel Id>", "< channel id 2>"]
 const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam({
 clientBot: bot 
@@ -32,6 +33,7 @@ Fully customisable Ex.
 ```
 const Discord = require("discord.js");
 const bot = new Discord.Client();
+bot.NoCheckSpamChannel = ["< Channel Id>", "< channel id 2>"]
 const Antiraid = require("anti-raid");
 const setup = Antiraid.checkspam({ 
 clientBot: bot,
@@ -49,4 +51,38 @@ ignoreduser: ["596521432507219980"], //not check spam this user id
 });
 bot.login("<your bot token>");
 
+```
+
+*List channel No check spam channel*
+
+```
+const Antiraid = require("anti-raid");
+console.log(Antiraid.list());
+```
+
+
+*add No check spam channel*
+
+```
+const Antiraid = require("anti-raid");
+Antiraid.addChannel("<Channel Id>");
+```
+
+
+*Remove No check spam channel*
+
+```
+const Antiraid = require("anti-raid");
+Antiraid.removeChannel("<Channel Id>");
+```
+
+
+**NOTE Add channel and Remove channel No Support Array**
+
+
+*Version*
+
+```
+const Antiraid = require("anti-raid");
+console.log(Antiraid.version);
 ```
